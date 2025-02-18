@@ -17,6 +17,7 @@ includeDNSTests=1
 includeCurlTests=1
 includePortTests=1
 includePingTests=1
+includeIpapiTest=1
 
 #Set count for ping test
 pingCount=4
@@ -102,6 +103,12 @@ function listSystemDetails() {
     postNetworkServices
     postIfConfig
     postNetStat
+    
+    if [ $includeIpapiTest -eq 1 ]
+    then
+        ipapiTest
+    fi
+
     echo -e "\n---------------------------------- System Details ----------------------------------\n" >> $pathToOutput
 }
 
@@ -139,6 +146,13 @@ function postNameServers() {
 postDateTime(){
     UTCDateTime=$(date -u)
     echo -e "\nTests Initiated (UTC): $UTCDateTime\n" >> $pathToOutput
+}
+
+function ipapiTest() {
+    publicIP=$(curl -s https://ipv4.icanhazip.com)
+    echo -e "\nPublic IP (curl https://ipv4.icanhazip.com): $publicIP\n" >> $pathToOutput
+    ipapiOut=$(curl -s "https://api.ipapi.is?q=$publicIP&key=0973e820ecded25f")
+    echo -e "ipapi check: $ipapiOut\n" >> $pathToOutput
 }
 
 function portTests() {
