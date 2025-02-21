@@ -50,4 +50,5 @@ Modify the script variables to customize testing parameters:
 This script is provided as-is with no warranty. Use it at your own risk.
 
 ## Author
-[Your Name or Organization]
+
+Craig Donovan
