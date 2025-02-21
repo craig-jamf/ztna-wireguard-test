@@ -1,4 +1,4 @@
-# JT ZTNA WireGuard Test Script
+# Jamf Trust ZTNA WireGuard Test Script
 
 This Bash script performs network connectivity tests to specific domains and ports while toggling Jamf Trust (ZTNA WireGuard) on and off. The script runs various tests, including DNS resolution, cURL requests, port connectivity checks, ping tests, and IP address verification.
 
